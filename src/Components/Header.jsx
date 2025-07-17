@@ -17,7 +17,7 @@ const Header = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
-        <div className="text-xl font-bold text-red-600">YouTube</div>
+        <div className="cursor-pointer text-xl font-bold text-red-600">YouTube</div>
       </div>
 
       {/* Search Input */}
