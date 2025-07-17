@@ -4,13 +4,7 @@ import {Link} from 'react-router-dom';
 
 const SuggestedCategories = () => {
   const suggested = [
-    "All",
-    "Music",  
-    "Gaming",
-    "News",
-    "Movies",
-    "Live",
-    "Sports",
+    "All", "Music", "Gaming", "Mixes","Movies", "Learning", "Entertainment", "Comedy", "Trailers"
   ]
   return (
     <div className="flex justify-start items-center px-8 py-4">
