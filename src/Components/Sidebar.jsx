@@ -1,4 +1,13 @@
+import {useSelector} from 'react-redux';
+
+
 const Sidebar = () => {
+  const isSidebarOpen = useSelector((store) => store.app.isSidebarOpen);
+
+  if(!isSidebarOpen) {
+    return null; // If sidebar is closed, return null to not render anything
+  }
+
   const menuItems = [
     { 
       name: "Home", 
@@ -70,7 +79,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="w-60 bg-black h-full overflow-y-auto border-r border-gray-900">
+    <div className="w-60 bg-black h-full overflow-y-auto border-r border-gray-900 flex-shrink-0">
       {/* Main Menu */}
       <div className="py-2">
         {menuItems.map((item, index) => (

@@ -1,9 +1,18 @@
+import { useDispatch } from 'react-redux';
+import { toggleSidebar } from '../utils/appSlice'; 
+
 const Header = () => {
+  const dispatch = useDispatch();
+  
+  const toggleHamburger = () => {
+    dispatch(toggleSidebar());
+  }
+
   return (
     <div className="flex items-center justify-between p-4 bg-black shadow-md border-b border-gray-900">
       {/* Hamburger and Logo */}
       <div className="flex items-center space-x-4">
-        <button className="text-white p-2 rounded-md hover:text-gray-300">
+        <button onClick={toggleHamburger} className="text-white p-2 rounded-md hover:text-gray-300">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
