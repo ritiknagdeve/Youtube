@@ -8,19 +8,38 @@ import store from './utils/store';
 
 import {RouterProvider, createBrowserRouter} from 'react-router-dom';
 import WatchPage from './Components/WatchPage'; // Importing WatchPage component
+import { useSelector } from 'react-redux';
 
+// Layout component for home page
+const HomeLayout = () => (
+  <div className="flex flex-1 bg-black overflow-hidden">
+    <Sidebar />
+    <Body />
+  </div>
+);
 
+// Layout component for watch page  
+const WatchLayout = () => {
+  const isSidebarOpen = useSelector((store) => store.app.isSidebarOpen);
+  
+  return (
+    <div className="flex flex-1 bg-black overflow-hidden">
+      {isSidebarOpen && <Sidebar />}
+      <WatchPage />
+    </div>
+  );
+};
 
 function App() {
 
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Body />
+      element: <HomeLayout />
     },
     {
       path: '/watch',
-      element:<WatchPage />
+      element: <WatchLayout />
     }
   ]);
 
@@ -30,10 +49,7 @@ function App() {
       <div className="flex flex-col h-screen bg-black overflow-hidden">
         
         <Header />
-        <div className="flex flex-1 bg-black overflow-hidden">
-          <Sidebar />
-          <RouterProvider router={router} />
-        </div>
+        <RouterProvider router={router} />
       </div>
 
     </Provider>

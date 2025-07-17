@@ -1,10 +1,13 @@
 import React,{useState, useEffect} from 'react'
 import VideoCard from './VideoCard'; // Importing VideoCard component
 import { useNavigate } from 'react-router-dom'; // Importing useNavigate hook
+import { useDispatch } from 'react-redux';
+import { closeSidebar } from '../utils/appSlice'; // Importing closeSidebar action
 
 const VideoContainer = () => {
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
   const [videos, setVideos] = useState([]);
   useEffect(() => {
@@ -32,6 +35,8 @@ const VideoContainer = () => {
     console.log('Video clicked:', videoId);
     // Handle video click (e.g., https://www.youtube.com/watch?v=6fp5xgrDtUQ)
     navigate(`/watch?v=${videoId}`);
+    dispatch(closeSidebar()); // Close sidebar on video click
+
   };
 
   return (
