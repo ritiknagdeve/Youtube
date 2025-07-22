@@ -12,20 +12,25 @@ import { useSelector } from 'react-redux';
 
 // Layout component for home page
 const HomeLayout = () => (
-  <div className="flex flex-1 bg-black overflow-hidden">
-    <Sidebar />
-    <Body />
+  <div className="flex flex-col h-screen bg-black overflow-hidden">
+    <Header />
+    <div className="flex flex-1 bg-black overflow-hidden">
+      <Sidebar />
+      <Body />
+    </div>
   </div>
 );
 
 // Layout component for watch page  
 const WatchLayout = () => {
   const isSidebarOpen = useSelector((store) => store.app.isSidebarOpen);
-  
   return (
-    <div className="flex flex-1 bg-black overflow-hidden">
-      {isSidebarOpen && <Sidebar />}
-      <WatchPage />
+    <div className="flex flex-col h-screen bg-black overflow-hidden">
+      <Header />
+      <div className="flex flex-1 bg-black overflow-hidden">
+        {isSidebarOpen && <Sidebar />}
+        <WatchPage />
+      </div>
     </div>
   );
 };
@@ -38,6 +43,10 @@ function App() {
       element: <HomeLayout />
     },
     {
+      path: '/search',
+      element: <HomeLayout />
+    },
+    {
       path: '/watch',
       element: <WatchLayout />
     }
@@ -45,13 +54,7 @@ function App() {
 
   return (
     <Provider store={store}>
-
-      <div className="flex flex-col h-screen bg-black overflow-hidden">
-        
-        <Header />
-        <RouterProvider router={router} />
-      </div>
-
+      <RouterProvider router={router} />
     </Provider>
   )
 }

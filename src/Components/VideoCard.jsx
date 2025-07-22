@@ -29,7 +29,7 @@ const VideoCard = ({info, onClick}) => {
         <h3 className="text-white text-sm font-medium line-clamp-2 leading-5 mb-1">
           {title}
         </h3>
-        <p className="text-gray-400 text-xs mb-1">{channelTitle}</p>
+        <p className="text-gray-400 text-xs mb-1">{channelTitle || title}</p>
         <p className="text-gray-400 text-xs">{formatViews(views)} views</p>
       </div>
     </div>

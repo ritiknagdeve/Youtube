@@ -1,18 +1,19 @@
 import React,{useState, useEffect} from 'react'
 import VideoCard from './VideoCard'; // Importing VideoCard component
 import { useNavigate } from 'react-router-dom'; // Importing useNavigate hook
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { closeSidebar } from '../utils/appSlice'; // Importing closeSidebar action
 
 const VideoContainer = () => {
+
+    const searchData = useSelector((store) => store.searchData.searchData);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
   const [videos, setVideos] = useState([]);
-  useEffect(() => {
-    // Fetch videos or perform any setup here
-    const fetchVideos = async () => {
+
+  const fetchVideos = async () => {
       try {
         const response = await fetch('/api/videos');
         const data = await response.json();
@@ -21,14 +22,22 @@ const VideoContainer = () => {
       } catch (error) {
         console.error('Error fetching videos:', error);
       }
-    };
+  };
 
-    fetchVideos();
+  useEffect(() => {
+    // Fetch videos or perform any setup here
+    if (searchData.length > 0) {
+      setVideos(searchData[0]);
+      console.log('Using search data:', searchData[0]);
+    }
+    else {
+      fetchVideos();
+    }
 
-  }, []);
+  }, [searchData]);
 
   if(!videos.length) {
-    return;
+    return null;
   }
 
   const handleVideoClick = (videoId) => {

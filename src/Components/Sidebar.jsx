@@ -111,20 +111,7 @@ const Sidebar = () => {
 
       <hr className="my-2 border-gray-900" />
 
-      {/* Subscriptions */}
-      <div className="py-2">
-        <div className="px-6 py-2">
-          <h3 className="text-sm font-medium text-white">Subscriptions</h3>
-        </div>
-        {["Akshay Saini", "PedroTech", "Harkirat Singh", "LIFAFA"].map((channel, index) => (
-          <div key={index} className="flex items-center px-6 py-2 hover:bg-gray-900 cursor-pointer">
-            <div className="w-6 h-6 rounded-full bg-gray-600 mr-6 flex items-center justify-center text-white text-xs font-semibold">
-              {channel.charAt(0)}
-            </div>
-            <span className="text-white text-sm">{channel}</span>
-          </div>
-        ))}
-      </div>
+      
     </div>
   );
 };

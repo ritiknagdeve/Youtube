@@ -25,6 +25,47 @@ app.get('/api/videos', async (req, res) => {
   }
 });
 
+app.get('/api/suggestions', async (req, res) => {
+  const query = req.query.q;
+  const url = `https://clients1.google.com/complete/search?client=firefox&ds=yt&q=${encodeURIComponent(query)}`;
+
+  try {
+    const response = await fetch(url);
+    const json = await response.json(); // this is real JSON
+    res.json(json);
+  } catch (err) {
+    console.error('Error fetching suggestions:', err);
+    res.status(500).json({ error: 'Failed to fetch suggestions' });
+  }
+});
+
+app.get('/api/search', async (req, res) => {
+  const q = encodeURIComponent(req.query.q);
+  const url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${q}&key=${process.env.YOUTUBE_API_KEY}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error('Error fetching YouTube API:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.get('/api/categories', async (req, res) => {
+  const url = `https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=${process.env.YOUTUBE_API_KEY}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error('Error fetching YouTube API:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
