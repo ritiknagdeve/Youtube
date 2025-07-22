@@ -17,7 +17,7 @@ const VideoContainer = () => {
       try {
         const response = await fetch('/api/videos');
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setVideos(data.items || []);
       } catch (error) {
         console.error('Error fetching videos:', error);
@@ -28,7 +28,7 @@ const VideoContainer = () => {
     // Fetch videos or perform any setup here
     if (searchData.length > 0) {
       setVideos(searchData[0]);
-      console.log('Using search data:', searchData[0]);
+      // console.log('Using search data:', searchData[0]);
     }
     else {
       fetchVideos();
@@ -41,7 +41,7 @@ const VideoContainer = () => {
   }
 
   const handleVideoClick = (videoId) => {
-    console.log('Video clicked:', videoId);
+    // console.log('Video clicked:', videoId);
     // Handle video click (e.g., https://www.youtube.com/watch?v=6fp5xgrDtUQ)
     navigate(`/watch?v=${videoId}`);
     dispatch(closeSidebar()); // Close sidebar on video click
