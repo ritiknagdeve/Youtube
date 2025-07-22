@@ -14,7 +14,9 @@ const Sidebar = () => {
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
       ), path: "/" },
     { name: "Shorts", icon: (
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M10 14.65v-5.3L15 12l-5 2.65zm7.77-4.33c-.77-.32-1.2-.5-1.2-.5L12 18.5c0 1.38-1.12 2.5-2.5 2.5s-2.5-1.12-2.5-2.5v-13C7 4.12 8.12 3 9.5 3s2.5 1.12 2.5 2.5v1.83c.13-.04.23-.07.23-.07l4.57-1.83c.77-.32 1.2-.5 1.2-.5s2.5.84 2.5 2.5v4.33c0 1.66-2.5 2.5-2.5 2.5z"/></svg>
+        <svg className="w-6 h-6" fill="#6B7280" viewBox="0 0 24 24">
+          <polygon points="8,5 19,12 8,19" />
+        </svg>
       ), path: "/shorts" },
     { name: "Subscriptions", icon: (
         <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M10 18v-6l5 3-5 3zm7-15H7v1h10V3zm3 3H4v1h16V6zm2 3H2v12h20V9zM3 10h18v10H3V10z"/></svg>

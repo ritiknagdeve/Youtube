@@ -113,9 +113,9 @@ const Header = () => {
       </div>
 
       {/* User Logo */}
-      <div className="flex items-center">
-        <button className="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center text-white font-semibold hover:bg-gray-600">
-          U
+      <div className="flex items-center px-8">
+        <button className="w-8 h-8  bg-gray-500 rounded-full flex items-center justify-center text-white font-semibold hover:bg-gray-600">
+          R
         </button>
       </div>
     </div>
