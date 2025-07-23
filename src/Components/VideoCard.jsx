@@ -2,6 +2,7 @@ import React from 'react'
 
 const VideoCard = ({info, onClick}) => {
   const { id, snippet, statistics} = info;
+  // const videoId = id || id.videoId;
   const views = statistics?.viewCount || 'N/A';
   const { channelTitle, title, thumbnails } = snippet;
   const thumbnailUrl = thumbnails?.medium?.url || thumbnails?.standard?.url;

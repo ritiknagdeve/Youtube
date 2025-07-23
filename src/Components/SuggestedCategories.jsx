@@ -23,6 +23,7 @@ const SuggestedCategories = () => {
     console.log("Category clicked:", category);
     const res = await fetch(`/api/search?q=${encodeURIComponent(category.trim())}`);
     const data = await res.json();
+    console.log("Search results for category:", data);
     dispatch(clearSearchData()); // Clear previous search data
     dispatch(addSearchData(data.items));
     navigate('/search');
@@ -82,10 +83,10 @@ const SuggestedCategories = () => {
         style={{ scrollBehavior: 'smooth', overflow: 'hidden' }}
       >
         <ul className="flex gap-4 w-full">
-          {suggested.map((category) => (
+          {suggested.map((category, index) => (
             <li
               onClick={handleCategoryClick}
-              key={category}
+              key={category + '-' + index}
               className={`text-white px-4 py-2 rounded-xl shadow-md cursor-pointer font-medium text-base whitespace-nowrap transition-all duration-150 border border-gray-700 hover:bg-gray-700 hover:scale-105 focus:outline-none ${activeCategory === category ? 'bg-gray-500' : 'bg-gray-800'}`}
               tabIndex={0}
             >
