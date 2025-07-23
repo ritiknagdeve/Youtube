@@ -28,10 +28,8 @@ const WatchPage = () => {
     const interval = setInterval(() => {
       
       dispatch(addMessage({ user: getRandomUser(), message: getRandomMessage() }));
-      if(chats.length > 200) {
-        dispatch(clearMessages());
-      }
-    }, 1300);
+    
+    }, 900);
 
     return () => clearInterval(interval);
   }, []);

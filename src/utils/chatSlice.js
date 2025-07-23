@@ -7,11 +7,8 @@ const chatSlice = createSlice({
   reducers: {
     addMessage: (state, action) => {
       state.messages.push(action.payload);
-    },
-    clearMessages: (state) => {
-      // Only keep the latest 200 messages
-      if (state.messages.length > 200) {
-        state.messages = state.messages.slice(-200);
+      if (state.messages.length > 30) {
+            state.messages = state.messages.slice(-30);
       }
     },
   },
