@@ -13,14 +13,18 @@ const VideoContainer = () => {
 
   const [videos, setVideos] = useState([]);
 
-  const fetchVideos = async () => {
 
+  const fetchVideos = async () => {
     try {
       const response = await fetch('/api/videos?pageToken=' + encodeURIComponent(pageToken));
       const data = await response.json();
       setPageToken(data.nextPageToken || '');
-      setVideos((prevVideos) => [...prevVideos, ...data.items]);
-
+      if (Array.isArray(data.items)) {
+        setVideos((prevVideos) => [...prevVideos, ...data.items]);
+      } else {
+        // Optionally handle error state here
+        console.error('No videos found or API error:', data);
+      }
     } catch (error) {
       console.error('Error fetching videos:', error);
     }
