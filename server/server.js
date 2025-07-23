@@ -12,8 +12,12 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/api/videos', async (req, res) => {
-  
-  const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&key=${process.env.YOUTUBE_API_KEY}`;
+
+  let url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&regionCode=US&key=${process.env.YOUTUBE_API_KEY}`;
+  const pageToken = req.query.pageToken;
+  if (pageToken) {
+    url += `&pageToken=${encodeURIComponent(pageToken)}`;
+  } 
 
   try {
     const response = await fetch(url);
