@@ -69,12 +69,14 @@ const SuggestedCategories = () => {
     <div className="relative flex items-center px-8 py-4" style={{overflow: 'hidden'}}>
       {showLeft && (
         <button
-          className="absolute left-0 z-30 bg-black text-white px-2 py-2 rounded-full shadow hover:bg-gray-700 focus:outline-none"
-          style={{ top: '50%', transform: 'translateY(-50%)' }}
+          className="absolute left-0 z-30 flex items-center justify-center bg-gray-800/80 text-gray-300 w-8 h-8 rounded-full shadow-md hover:bg-gray-700 hover:text-white focus:outline-none border border-gray-700"
+          style={{ top: '50%', transform: 'translateY(-50%)', transition: 'background 0.2s, color 0.2s' }}
           onClick={() => listRef.current.scrollBy({ left: -500, behavior: 'smooth' })}
           aria-label="Scroll left"
         >
-          {'<'}
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 16L8 10L13 4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
       )}
       <div
@@ -97,12 +99,14 @@ const SuggestedCategories = () => {
       </div>
       {showRight && (
         <button
-          className="absolute right-0 z-30 bg-black text-white px-2 py-2 rounded-full shadow hover:bg-gray-700 focus:outline-none"
-          style={{ top: '50%', transform: 'translateY(-50%)' }}
+          className="absolute right-0 z-30 flex items-center justify-center bg-gray-800/80 text-gray-300 w-8 h-8 rounded-full shadow-md hover:bg-gray-700 hover:text-white focus:outline-none border border-gray-700"
+          style={{ top: '50%', transform: 'translateY(-50%)', transition: 'background 0.2s, color 0.2s' }}
           onClick={() => listRef.current.scrollBy({ left: 500, behavior: 'smooth' })}
           aria-label="Scroll right"
         >
-          {'>'}
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 4L12 10L7 16" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
       )}
     </div>
