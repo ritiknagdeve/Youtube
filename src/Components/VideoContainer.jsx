@@ -1,8 +1,8 @@
 import React,{useState, useEffect} from 'react'
-import VideoCard from './VideoCard'; // Importing VideoCard component
-import { useNavigate } from 'react-router-dom'; // Importing useNavigate hook
+import VideoCard from './VideoCard'; 
+import { useNavigate } from 'react-router-dom'; 
 import { useDispatch, useSelector } from 'react-redux';
-import { closeSidebar } from '../utils/appSlice'; // Importing closeSidebar action
+import { closeSidebar } from '../utils/appSlice'; 
 
 const VideoContainer = () => {
 
