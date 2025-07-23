@@ -22,7 +22,6 @@ const VideoContainer = () => {
       if (Array.isArray(data.items)) {
         setVideos((prevVideos) => [...prevVideos, ...data.items]);
       } else {
-        // Optionally handle error state here
         console.error('No videos found or API error:', data);
       }
     } catch (error) {
@@ -52,7 +51,7 @@ const VideoContainer = () => {
 
   }, [searchData]);
 
-  if(!videos.length) {
+  if(!videos || videos.length === 0) {
     return null;
   }
 
