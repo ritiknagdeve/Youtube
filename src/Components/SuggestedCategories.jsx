@@ -35,7 +35,8 @@ const SuggestedCategories = () => {
         const response = await fetch('/api/categories');
         const data = await response.json();
         console.log("Fetched categories:", data);
-        setSuggested(data.items.map(item => item.snippet.title));
+        // setSuggested(data.items.map(item => item.snippet.title));
+        setSuggested(Array.isArray(data.items) ? data.items.map(item => item.snippet.title) : []);
       } catch (error) {
         console.error('Error fetching categories:', error);
       }
